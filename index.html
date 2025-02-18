@@ -5,390 +5,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Web Previews</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            column-gap: 8px;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        
-        h1 {
-            width: 100%;
-            color: #333;
-        }
-        
-        .preview {
-            position: relative;
-            margin-top: 20px;
-            width: 45%;
-            aspect-ratio: 2;
-            box-shadow: 0 1px 6px 0 #20212447;
-            border-radius: 8px;
-        }
-        
-        
-        iframe {
-            border-radius: 8px;
-            width: 100%;
-            height: 100%;
-        }
-        
-        a {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: black;
-            color: white;
-            text-decoration: none;
-        }
-        
-        @media(min-width:2801px) {
-            .preview {
-                zoom: 0.775;
-            }
-        }
-        
-        @media(max-width:2800px) {
-            .preview {
-                zoom: 0.75;
-            }
-        }
-        
-        @media(max-width:2700px) {
-            .preview {
-                zoom: 0.725;
-            }
-        }
-        
-        @media(max-width:2600px) {
-            .preview {
-                zoom: 0.7;
-            }
-        }
-        
-        @media(max-width:2500px) {
-            .preview {
-                zoom: 0.675;
-            }
-        }
-        
-        @media(max-width:2400px) {
-            .preview {
-                zoom: 0.65;
-            }
-        }
-        
-        @media(max-width:2300px) {
-            .preview {
-                zoom: 0.625;
-            }
-        }
-        
-        @media(max-width:2200px) {
-            .preview {
-                zoom: 0.6;
-            }
-        }
-        
-        @media(max-width:2100px) {
-            .preview {
-                zoom: 0.575;
-            }
-        }
-        
-        @media(max-width:2000px) {
-            .preview {
-                zoom: 0.55;
-            }
-        }
-        
-        @media(max-width:1900px) {
-            .preview {
-                zoom: 0.525;
-            }
-        }
-        
-        @media(max-width:1800px) {
-            .preview {
-                zoom: 0.5;
-            }
-        }
-        
-        @media(max-width:1700px) {
-            .preview {
-                zoom: 0.475;
-            }
-        }
-        
-        @media(max-width:1600px) {
-            .preview {
-                zoom: 0.45;
-            }
-        }
-        
-        @media(max-width:1500px) {
-            .preview {
-                zoom: 0.425;
-            }
-        }
-        
-        @media(max-width:1400px) {
-            .preview {
-                zoom: 0.375;
-            }
-        }
-        
-        @media(max-width:1300px) {
-            .preview {
-                zoom: 0.35;
-            }
-        }
-        
-        @media(max-width:1200px) {
-            .preview {
-                zoom: 0.325;
-            }
-        }
-        
-        @media(max-width:1120px) {
-            .preview {
-                zoom: 0.3;
-            }
-        }
-        
-        @media(max-width:1000px) {
-            .preview {
-                zoom: 0.285;
-            }
-        }
-        
-        @media(max-width:960px) {
-            .preview {
-                width: 100%;
-                zoom: 0.6;
-            }
-        }
-        
-        @media(max-width:900px) {
-            .preview {
-                zoom: 0.5;
-            }
-        }
-        
-        @media(max-width:840px) {
-            .preview {
-                zoom: 0.475;
-            }
-        }
-        
-        @media(max-width:720px) {
-            .preview {
-                zoom: 0.45;
-            }
-        }
-        
-        @media(max-width:687px) {
-            .preview {
-                zoom: 0.425;
-            }
-        }
-        
-        @media(max-width:650px) {
-            .preview {
-                zoom: 0.4;
-            }
-        }
-        
-        @media(max-width:616px) {
-            .preview {
-                zoom: 0.375;
-            }
-        }
-        
-        @media(max-width:582px) {
-            .preview {
-                zoom: 0.35;
-            }
-        }
-        
-        @media(max-width:545px) {
-            .preview {
-                zoom: 0.325;
-            }
-        }
-        
-        @media(max-width:512px) {
-            .preview {
-                zoom: 0.3;
-            }
-        }
-        
-        @media(max-width:500px) {
-            .preview {
-                min-height: 90vh;
-                zoom: 1;
-                margin-bottom: 100px;
-            }
-        
-            a {
-                padding: 10px 14px;
-                border-radius: 4px;
-                font-size: 20px;
-                zoom: 1;
-                margin-top: 20px;
-            }
-        
-            .open{
-                margin-left: 19%;
-            }
-            .code {
-                margin-left: 59%;
-            }
-        
-        }
-        
-        @media(max-width:445px) {
-            .preview {
-                min-height: 100vh;
-                zoom: 0.8;
-            }
-        }
-        
-        @media(min-width:501px) {
-        
-            a {
-                font-size: 0px;
-                right: 6px;
-                min-width: 35px;
-                min-height: 35px;
-                border-radius: 50%;
-                zoom: 3;
-            }
-        
-            a:hover {
-                background-color: #333;
-                zoom: 3.25;
-            }
-        
-            .open {
-                top: 15px;
-            }
-        
-            .code {
-                top: 52px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <h1>Live Preview of My Projects</h1>
-
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/spotify/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/spotify" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/spotify" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/ludo/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/ludo" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/ludo" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/3x3/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/3x3" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/3x3" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/ttt/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/ttt" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/ttt" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/simonsays/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/simonsays" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/simonsays" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/calculator/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/calculator" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/calculator" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/To-Do/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/To-Do" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/To-Do" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/instagram/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/instagram" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/instagram" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/youtube/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/youtube" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/youtube" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-        <div class="preview">
-            <iframe src="https://shanmukn21.github.io/google/" frameborder="0"></iframe>
-            <a class="open" href="https://shanmukn21.github.io/google" target="_blank">Open
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            </a>
-            <a class="code" href="https://github.com/shanmukn21/google" target="_blank">Code
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
-            </a>
-        </div>
-
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/spotify/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/spotify" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/spotify" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/ludo/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/ludo" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/ludo" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/3x3/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/3x3" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/3x3" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/ttt/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/ttt" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/ttt" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview whitebox">
+        <iframe src="https://shanmukn21.github.io/simonsays/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/simonsays" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/simonsays" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview whitebox">
+        <iframe src="https://shanmukn21.github.io/calculator/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/calculator" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/calculator" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/To-Do/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/To-Do" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/To-Do" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/instagram/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/instagram" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/instagram" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview">
+        <iframe src="https://shanmukn21.github.io/youtube/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/youtube" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/youtube" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <div class="preview whitebox">
+        <iframe src="https://shanmukn21.github.io/google/" frameborder="0"></iframe>
+        <a class="open" href="https://shanmukn21.github.io/google" target="_blank">Open
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+            </svg>
+        </a>
+        <a class="code" href="https://github.com/shanmukn21/google" target="_blank">Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path
+                    d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
+            </svg>
+        </a>
+    </div>
+    <button class="previous"> < </button>
+    <button class="next"> > </button>
+    <script src="script.js"></script>
 </body>
 
 </html>
