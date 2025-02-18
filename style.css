@@ -227,7 +227,7 @@ a {
     }
 }
 
-@media(max-width:500px) {
+@media(max-width:484px) {
     body {
         position: relative;
         padding: 10px 0px;
@@ -235,8 +235,8 @@ a {
     }
 
     .preview {
-        min-height: 90vh;
-        zoom: 1;
+        min-height: calc(var(--vh, 1vh) * 116);
+        zoom: 0.8;
         margin: 0px 10px;
     }
 
@@ -248,11 +248,11 @@ a {
     }
 
     .open {
-        margin-left: 24%;
+        margin-left: 18.5%;
     }
 
     .code {
-        margin-left: 56%;
+        margin-left: 60.5%;
     }
 
     button {
@@ -274,16 +274,18 @@ a {
     .next {
         right: 10px;
     }
-}
 
-@media(max-width:445px) {
-    .preview {
-        min-height: 117vh;
-        zoom: 0.8;
+    .screen{
+        zoom:1.25;
+        bottom:-23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5px;
     }
 }
 
-@media(min-width:501px) {
+@media(min-width:485px) {
     body {
         flex-wrap: wrap;
     }
