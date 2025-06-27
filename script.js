@@ -3,11 +3,11 @@ var next = document.querySelector('.next');
 var previous = document.querySelector('.previous');
 var i = 0;
 next.addEventListener('click', function () {
-    if (i < 9) {
+    if (i < 6) {
         preview[i].style.display = 'none';
         i++;
         preview[i].style.display = 'block';
-        if (i === 9) {
+        if (i === 6) {
             next.style.display = 'none';
         } else {
             previous.style.display = 'block';
@@ -28,12 +28,26 @@ previous.addEventListener('click', function () {
 });
 var width = (document.querySelector("body")).getBoundingClientRect().width;
 if (width <= 483) {
-    for (let j = 1; j < 10; j++) {
+    for (let j = 1; j < 7; j++) {
         preview[j].style.display = 'none';
     }
 }
 function updateVH() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    width = (document.querySelector("body")).getBoundingClientRect().width;
+    if (width <= 483) {
+        for (let j = 0; j < 7; j++) {
+            if(i===j){
+                preview[j].style.display = 'block';
+            }else{
+                preview[j].style.display = 'none';
+            }
+        }
+    } else {
+        for (let j = 0; j < 7; j++) {
+            preview[j].style.display = 'block';
+        }
+    }
 }
 window.addEventListener('resize', updateVH);
 updateVH();
